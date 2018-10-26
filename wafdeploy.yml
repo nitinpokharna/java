@@ -1,0 +1,23 @@
+- name: CREATE ARM Deployment PLAYBOOK
+  hosts: localhost
+  connection: local
+  gather_facts: False
+  vars:
+    templateLink: 'https://raw.githubusercontent.com/nitinpokharna/java/master/azuredeploywaf.json'
+       
+  tasks:
+
+  - name: Deploy ARM template
+    azure_rm_deployment:
+        state: present
+        resource_group_name: 'ENYrg'
+        # location seems to be not optional
+        location: 'West Europe'
+        template_link: '{{ templateLink }}'
+        parameters:
+          webappname: 'nitinff'
+          virtualNetworkName: 'nitinnw'
+          subnetName: 'nitinsub'
+          applicationGatewayName: 'nitingateway'
+          publicIPAddressName: 'nitinpubip'
+          location: 'West Europe'
