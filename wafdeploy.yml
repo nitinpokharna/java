@@ -6,7 +6,6 @@
     templateLink: 'https://raw.githubusercontent.com/nitinpokharna/java/master/azuredeploywaf.json'
        
   tasks:
-
   - name: Deploy ARM template
     azure_rm_deployment:
         state: present
