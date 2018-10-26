@@ -10,12 +10,12 @@
   - name: Deploy ARM template
     azure_rm_deployment:
         state: present
-        resource_group_name: 'ENYrg'
+        resource_group_name: "ENYrg"
         # location seems to be not optional
-        location: 'West Europe'
+        location: "West Europe"
         template_link: '{{ templateLink }}'
         parameters:
-          webappname: 'nitinff'
+          webappname: "nitinff"
           virtualNetworkName: 'nitinnw'
           subnetName: 'nitinsub'
           applicationGatewayName: 'nitingateway'
