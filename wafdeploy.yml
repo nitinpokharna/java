@@ -15,8 +15,13 @@
         location: "West Europe"
         template_link: '{{ templateLink }}'
         parameters:
-          virtualNetworkName: 'nitinnw'
-          subnetName: 'nitinsub'
-          applicationGatewayName: 'nitingateway'
-          publicIPAddressName: 'nitinpubip'
-          location: 'West Europe'
+          virtualNetworkName: 
+            value: "nitinnw"
+          subnetName: 
+            value: "nitinsub"
+          applicationGatewayName: 
+            value: "nitingateway"
+          publicIPAddressName: 
+            value: "nitinpubip"
+          location: 
+            value: "West Europe"
