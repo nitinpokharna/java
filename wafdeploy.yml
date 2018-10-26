@@ -17,8 +17,6 @@
         parameters:
           capacity:
             value: 2
-          webappname:
-            value: "https://nitinff.azurewebsites.net"
           virtualNetworkName: 
             value: "nitinnw"
           subnetName: 
