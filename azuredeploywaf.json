@@ -9,9 +9,6 @@
         "description": "Address prefix for the Virtual Network"
       }
     },    
-    "webappname": {
-      "type": "string"
-    },
     "virtualNetworkName": {
       "type": "string"
     },
@@ -193,7 +190,7 @@
             "properties": {
               "BackendAddresses": [
                 {
-                  "fqdn": "[parameters('webappname')]"
+                  "fqdn": "https://nitinff.azurewebsites.net"
                 }
               ]
               
