@@ -15,7 +15,7 @@
         location: "West Europe"
         template_link: '{{ templateLink }}'
         parameters:
-          webappname: "nitinff"
+          webappname: 'https://nitinff.azurewebsites.net'
           virtualNetworkName: 'nitinnw'
           subnetName: 'nitinsub'
           applicationGatewayName: 'nitingateway'
