@@ -181,7 +181,7 @@
 					"name": "appGatewayBackendPool",
 					"properties": {
 						"BackendAddresses": [{
-							"fqdn": "nitinff.azurewebsites.net"
+							"fqdn": "nitinwebapp12.azurewebsites.net"
 						}]
 
 					}
