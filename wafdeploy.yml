@@ -10,7 +10,7 @@
   - name: Deploy ARM template
     azure_rm_deployment:
         state: present
-        resource_group_name: "ENYrg"
+        resource_group_name: "eyrg"
         # location seems to be not optional
         location: "West Europe"
         template_link: '{{ templateLink }}'
@@ -18,13 +18,13 @@
           capacity:
             value: 2
           virtualNetworkName: 
-            value: "nitinnw"
+            value: "nitinnwe"
           subnetName: 
-            value: "nitinsub"
+            value: "nitinsube"
           applicationGatewayName: 
-            value: "nitingateway"
+            value: "nitingateways"
           publicIPAddressName: 
-            value: "nitinpubip"
+            value: "nitinpubipp"
           location: 
             value: "West Europe"
   - name: AZ Login to Azure
@@ -35,5 +35,9 @@
            --tenant "{{ AZURE_RM_TENANTID | mandatory }}"
   - name: az commands on Gateway
     shell: |
-           az network application-gateway http-listener create -g ENYrg --gateway-name nitingateway --frontend-port MyFrontendPort -n MyHttpListener --output json
-           az network application-gateway rule create -g ENYrg --gateway-name nitingateway -n MyRule --http-listener MyHttpListener --rule-type Basic --address-pool new --http-settings MyHttpSettings --output json
+           az network application-gateway address-pool create -g eyrg --gateway-name nitingateways -n new --servers nitinwebapp12.azurewebsites.net --output json echo '----------------------------------'
+           az network application-gateway probe create -g eyrg --gateway-name nitingateways --name  nitin --protocol http --host-name-from-http-settings true --path / --output json echo '----------------------------------'
+           az network application-gateway frontend-port create -g eyrg --gateway-name nitingateways -n MyFrontendPort --port 8080 --output json echo '----------------------------------'
+           az network application-gateway http-listener create -g eyrg --gateway-name nitingateways --frontend-port MyFrontendPort -n MyHttpListener --output json echo '----------------------------------'
+           az network application-gateway rule create -g eyrg --gateway-name nitingateways -n MyRule --http-listener MyBackendListener --rule-type Basic --address-pool MyAddressPool --http-settings MyHttpSettings --output json echo '----------------------------------'
+           az network application-gateway http-settings create -g eyrg --gateway-name nitingateways MyHttpSettings --port 80 --protocol Http --cookie-based-affinity Disabled --timeout 30 --output json echo '----------------------------------'
