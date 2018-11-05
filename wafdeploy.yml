@@ -35,8 +35,5 @@
            --tenant "{{ AZURE_RM_TENANTID | mandatory }}"
   - name: az commands on Gateway
     shell: |
-           az network application-gateway address-pool create -g ENYrg --gateway-name nitingateway -n new --servers nitinwebapp12.azurewebsites.net --output json
-           az network application-gateway probe create -g ENYrg --gateway-name nitingateway --name  nitin --protocol http --host-name-from-http-settings true --path / --output json
-           az network application-gateway http-settings create -g ENYrg --gateway-name nitingateway -n MyHttpSettings --port 80 --protocol Http --cookie-based-affinity Disabled --enable-probe true --probe nitin --protocol http --timeout 30 --output json
            az network application-gateway http-listener create -g ENYrg --gateway-name nitingateway --frontend-port MyFrontendPort -n MyHttpListener --output json
            az network application-gateway rule create -g ENYrg --gateway-name nitingateway -n MyRule --http-listener MyHttpListener --rule-type Basic --address-pool new --http-settings MyHttpSettings --output json
